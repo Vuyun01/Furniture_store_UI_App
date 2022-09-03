@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../app_assets.dart';
@@ -47,7 +45,9 @@ class _DetailsInfoState extends State<DetailsInfo> {
             Padding(
               padding: const EdgeInsets.only(top: kDefaultPadding/2),
               child: Text("\$${widget.product.price}", style: TextStyle(
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                color: Colors.orangeAccent,
+                fontSize: 20
               ),),
             ),
             Padding(

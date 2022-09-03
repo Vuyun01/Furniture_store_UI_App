@@ -1,6 +1,7 @@
 class Product {
   final int price;
   final String id, title, category, image, subTitle, description;
+  bool isLiked;
 
   Product({
     required this.id,
@@ -10,6 +11,7 @@ class Product {
     required this.image,
     required this.subTitle,
     required this.description,
+    this.isLiked = false
   });
 
   // It create an Category from JSON
@@ -22,6 +24,7 @@ class Product {
       category: json["category"],
       subTitle: json["subTitle"],
       description: json["description"],
+      isLiked: false
     );
   }
 }

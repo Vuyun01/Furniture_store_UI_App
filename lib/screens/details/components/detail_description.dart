@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 
 import '../../../constants.dart';
 import '../../../models/Product.dart';
@@ -38,11 +39,36 @@ class DetailsDescription extends StatelessWidget {
               fontWeight: FontWeight.bold, fontSize: 20)),
             Text("${product.description}", style: Theme.of(context).textTheme.bodyLarge!.copyWith(
               color: kTextColor.withOpacity(0.5), fontSize: 15)),
-            RoundedButton(
-              onPressed: (){}, 
-              name: "Add to Cart",
-              horizontal: kDefaultPadding*4, 
-              vertical: kDefaultPadding,)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RoundedButton(
+                  onPressed: (){}, 
+                  name: "Add to Cart",
+                  horizontal: kDefaultPadding*4, 
+                  vertical: kDefaultPadding,),
+                LikeButton(
+                  size: 40,
+                  circleColor:
+                  CircleColor(start: Color.fromARGB(255, 255, 238, 0), end: Color.fromARGB(255, 225, 65, 92)),
+                  bubblesColor: BubblesColor(
+                    dotPrimaryColor: Color.fromARGB(255, 240, 157, 14),
+                    dotSecondaryColor: Color.fromARGB(255, 114, 225, 66),
+                  ),
+                  likeBuilder: (bool isLiked) {
+                    return Icon(
+                      product.isLiked ? Icons.favorite : Icons.favorite_border,
+                      // color: isLiked ? Colors.red : Colors.grey,
+                      color: Colors.red,
+                      size: 40,
+                    );
+                  },
+                  onTap: (bool isLiked) async {
+                    return (product.isLiked = !product.isLiked);
+                  },
+                )
+              ],
+            )
           ],
         ),
       )
