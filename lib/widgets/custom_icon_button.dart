@@ -16,26 +16,11 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: kDefaultPadding/2),
-      child: TextButton(
-        style: TextButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          backgroundColor: Colors.cyan.shade200,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-        ),
-        onPressed: onTap, 
-        child: Row(
-          children: [
-            Icon(icon, color: Colors.white,size: 30,),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Text(name, style: TextStyle(
-                color: Colors.white, fontSize: 20),),
-            )
-          ],
-        )
-      ),
+    return ListTile(
+      leading: Icon(icon, size: 30),
+      title: Text(name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+      onTap: onTap,
+      contentPadding: EdgeInsets.symmetric(horizontal: 40),
     );
   }
 }
